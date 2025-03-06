@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
-    private ImageButton wishlistBtn, cartBtn, searchBtn, settingsBtn;
+    private ImageButton homeBtn, wishlistBtn, cartBtn, searchBtn, settingsBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -23,12 +23,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         setContentView(R.layout.activity_main);
 
         // buttons init process
+        homeBtn = findViewById(R.id.homeButton);
         wishlistBtn = findViewById(R.id.wishlistButton);
         cartBtn = findViewById(R.id.cartButton);
         searchBtn = findViewById(R.id.searchButton);
         settingsBtn = findViewById(R.id.settingsButton);
 
         // button click event
+        homeBtn.setOnClickListener(this);
         wishlistBtn.setOnClickListener(this);
         cartBtn.setOnClickListener(this);
         searchBtn.setOnClickListener(this);
@@ -41,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         // load default fragment process
-        loadFragment(new SettingsFragment());
+        loadFragment(new HomeFragment());
     }
 
     @Override
@@ -49,7 +51,9 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         int id = view.getId();
         
         try {
-            if (id == R.id.wishlistButton) {
+            if (id == R.id.homeButton) {
+                loadFragment(new HomeFragment());
+            } else if (id == R.id.wishlistButton) {
                 loadFragment(new WishlistFragment());
             } else if (id == R.id.cartButton) {
                 loadFragment(new CartFragment());
