@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         });
 
         // load default fragment process
-        loadFragment(new WishlistFragment());
+        loadFragment(new SettingsFragment());
     }
 
     @Override
